@@ -64,6 +64,28 @@ paths:
           - read: apiKey
 
   /Gis:
+  post: # Changed from get to post
+    tags:
+      - Gis Location
+    summary: Send Data Geospasial # Modified summary for the POST operation
+    description: Add Data Geospasial # Modified description for the POST operation
+    operationId: postGeoJSONGis # Modified operationId for the POST operation
+    requestBody: # Adding the request body for the POST operation
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeoJSONLineString' # Reference to the schema for the GeoJSON LineString
+    responses:
+      '200':
+        description: Data successfully received # Modified response description for the POST operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmationResponse' # Reference to the response schema
+      '400':
+        description: Invalid data sent # Modified response description for the POST operation
+
     get:
       tags:
         - Gis Location
