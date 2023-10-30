@@ -1,37 +1,37 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function - OpenAPI 3.0
+  title: DOKUMEN API GIS RAUL MAHYA - OpenAPI 3.0
   description: >-
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
     term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/jscroot/examples/tree/main/api/swagger
+  termsOfService: https://raulmahya123.github.io/sweggergis/
   contact:
-    email: awangga@gmail.com
+    email: raulmahya11@gmail.com
   license:
-    name: Peda Package
-    url: https://pkg.go.dev/github.com/petapedia/peda
+    name: Fancy Backend
+    url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
   version: 1.0.11
 externalDocs:
   description: Repo GCF
-  url: https://petapedia.github.io/gcf/
+  url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
 servers:
-  - url: https://asia-southeast2-awangga.cloudfunctions.net
+  - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net
 tags:
-  - name: data
+  - name: Data Get
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/get/
+      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
   - name: auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/
+      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
   - name: user
     description: Get Token and Authorize
 paths:
-  /petapedia:
+  /gislocation:
     get:
       tags:
         - data
@@ -49,7 +49,7 @@ paths:
                   $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-  /petapedia-post:
+  /function-16:
     post:
       tags:
         - auth
@@ -98,10 +98,10 @@ components:
       properties:
         username:
           type: string
-          example: petped
+          example: raull
         password:
           type: string
-          example: secret
+          example: ganteng
     AuthResponse:
       type: object
       properties:
