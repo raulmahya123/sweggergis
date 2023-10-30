@@ -18,10 +18,10 @@ servers:
   - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/gislocation
   - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/postgis
 paths:
-  /getallUser:
+  /getallgis:
     get:
       tags:
-        - Get All User
+        - Get All Gis
       summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
