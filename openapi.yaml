@@ -1,27 +1,40 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
-  title: DOKUMENTASI API FANCY PEDIA GIS BY RAUL MAHYA
+  title: Dokumen API Cloud Function - OpenAPI 3.0
   description: >-
-    DISINI SEMUAH API MICROSERVICES YANG ADA DI FANCY PEDIA GIS
+    Jelaskan disini apa saja yang perlu dijelaskan
+    termasuk informasi yang diperlukan untuk dinilai
+    term of service isi dari link repo dari swagger ini
   termsOfService: https://github.com/jscroot/examples/tree/main/api/swagger
   contact:
-    email: raulmahya11@gmail.com
+    email: awangga@gmail.com
   license:
-    name: Fancy BackEnd
-    url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
+    name: Peda Package
+    url: https://pkg.go.dev/github.com/petapedia/peda
   version: 1.0.11
 externalDocs:
   description: Repo GCF
-  url: https://github.com/Fancypedia/fancybackenddd
+  url: https://petapedia.github.io/gcf/
 servers:
-  - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/function-16
-  - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/gislocation
-  - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/postgis
+  - url: https://asia-southeast2-awangga.cloudfunctions.net
+tags:
+  - name: data
+    description: Data Geo Spasial
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://petapedia.github.io/gcf/get/
+  - name: auth
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://petapedia.github.io/gcf/post/
+  - name: user
+    description: Get Token and Authorize
 paths:
-  /getallgis:
-    post:
+  /petapedia:
+    get:
       tags:
-        - Get All Gis
+        - data
       summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
@@ -33,14 +46,13 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Login'
+                  $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-
-  /function-16:
+  /petapedia-post:
     post:
       tags:
-        - user
+        - auth
       summary: Login get Token
       description: Login and Get User Token
       operationId: authService
@@ -60,49 +72,8 @@ paths:
           description: Invalid input
       security:
         - token:
-          - write: apiKey
-          - read: apiKey
-
-  /gislocation:
-    post:
-      tags:
-        - Gis Location
-      summary: Send Data Geospasial
-      description: Add Data Geospasial
-      operationId: postGeoJSONGis
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GeoJSONLineString'
-      responses:
-        '200':
-          description: Data successfully received
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ConfirmationResponse'
-        '400':
-          description: Invalid data sent
-
-    get:
-      tags:
-        - Gis Location
-      summary: Get Data Geospasial
-      description: List Data Geospasial
-      operationId: getGeoJSONGis
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Peta'
-        '400':
-          description: Invalid status value
+            - write:apiKey
+            - read:apiKey
 components:
   schemas:
     Peta:
@@ -113,9 +84,9 @@ components:
         geometry:
           type: object
           properties:
-            type:
+            type: 
               type: string
-            coordinates:
+            coordinates: 
               type: array
         properties:
           type: object
@@ -143,24 +114,6 @@ components:
         token:
           type: string
           example: fehguy
-    Login:
-      type: object
-      properties:
-        username:
-          type: string
-          example: petped
-        password:
-          type: string
-          example: secret
-        Role:
-          type: string
-          example: admin || user
-    Delete:
-      type: object
-      properties:
-        username:
-          type: string
-          example: "zz"
   requestBodies:
     AuthReq:
       description: Request Authentication
@@ -181,6 +134,3 @@ components:
       type: apiKey
       name: token
       in: header
-
-security:  # Define security globally for all endpoints
-  - token: []  # Use the token security scheme for all endpoints
