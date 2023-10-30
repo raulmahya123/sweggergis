@@ -15,6 +15,8 @@ externalDocs:
   url: https://github.com/Fancypedia/fancybackenddd
 servers:
   - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/function-16
+  - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/gislocation
+  - url: https://asia-southeast2-testlogin-366704.cloudfunctions.net/postgis
 paths:
   /getallUser:
     get:
