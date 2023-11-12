@@ -137,9 +137,9 @@ paths:
     patch:
       tags:
         - Create GIS
-      summary: Create GIS Data
-      description: Add new GIS data
-      operationId: createGIS
+      summary: Update GIS Data
+      description: Update  GIS data
+      operationId: updateGIS
       requestBody:
         required: true
         content:
@@ -157,9 +157,9 @@ paths:
     delete:
       tags:
         - Create GIS
-      summary: Create GIS Data
-      description: Add new GIS data
-      operationId: createGIS
+      summary: Delete GIS Data
+      description: Delete GIS data
+      operationId: DeleteGIS
       requestBody:
         required: true
         content:
