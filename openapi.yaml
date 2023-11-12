@@ -70,10 +70,6 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
   /postgis:  # Penambahan endpoint Create GIS
     post:
       tags:
@@ -137,8 +133,46 @@ paths:
           description: Data successfully created
         '400':
           description: Invalid input or request body
+  /updatedgisfixx:  # Penambahan endpoint Create GIS
+    patch:
+      tags:
+        - Create GIS
+      summary: Create GIS Data
+      description: Add new GIS data
+      operationId: createGIS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
+      responses:
+        '201':
+          description: Data successfully created
+        '400':
+          description: Invalid input or request body
       security:
-        - token: []                      
+        - token: []
+  /deletegiss:  # Penambahan endpoint Create GIS
+    delete:
+      tags:
+        - Create GIS
+      summary: Create GIS Data
+      description: Add new GIS data
+      operationId: createGIS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
+      responses:
+        '201':
+          description: Data successfully created
+        '400':
+          description: Invalid input or request body
+      security:
+        - token: []               
 components:
   schemas:
     Peta:
