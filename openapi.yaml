@@ -23,34 +23,36 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
+  - name: auth
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
+  - name: user
+    description: Get Token and Authorize
 paths:
-  /createpostgisline-3:
+  /createpostgisline-3:  # Penambahan endpoint Create GIS
     post:
       tags:
         - Create GIS
       summary: Create GIS Data
       description: Add new GIS data
       operationId: createGIS
-      parameters:
-        - name: SECRET
-          in: header
-          description: Access Secret
-          required: true
-          schema:
-            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Peta' # Sesuaikan skema yang sesuai di sini
+              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
       responses:
         '201':
           description: Data successfully created
         '400':
           description: Invalid input or request body
       security:
-        - SECRET: []
+        - SECRET:
+            - write:apiKey
+            - read:SECRET
                
 components:
   schemas:
@@ -60,9 +62,12 @@ components:
         type:
           type: string
           example: "Feature"
-        name:
-          type: string
-          example: "LOKASI"
+        properties:
+          type: object
+          properties:
+            name:
+              type: string
+              example: "LOKASI"
         geometry:
           type: object
           properties:
@@ -72,4 +77,11 @@ components:
             coordinates:
               type: array
               items:
-                type: number
+                - type: array
+                  items:
+                    - [125.6, 10.1]
+  securitySchemes:
+    SECRET:
+      type: apiKey
+      name: SECRET
+      in: header
