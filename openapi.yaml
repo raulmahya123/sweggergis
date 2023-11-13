@@ -23,156 +23,35 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
-  - name: auth
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
-  - name: user
-    description: Get Token and Authorize
 paths:
-  /gisall:
-    get:
-      tags:
-        - data
-      summary: Get Data Geospasial
-      description: List Data Geospasial
-      operationId: getGeoJSON
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Peta'
-        '400':
-          description: Invalid status value
-  /function-16:
-    post:
-      tags:
-        - auth
-      summary: Login get Token
-      description: Login and Get User Token
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-  /postgis:  # Penambahan endpoint Create GIS
+  /createpostgisline-3:
     post:
       tags:
         - Create GIS
       summary: Create GIS Data
       description: Add new GIS data
       operationId: createGIS
+      parameters:
+        - name: SECRET
+          in: header
+          description: Access Secret
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
+              $ref: '#/components/schemas/Peta' # Sesuaikan skema yang sesuai di sini
       responses:
         '201':
           description: Data successfully created
         '400':
           description: Invalid input or request body
       security:
-        - token: []
-  /createacount:
-    post:
-      tags:
-        - user
-      summary: create user
-      description: create user
-      operationId: createuser
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-      security:
-        - token:
-            - write:apiKey
-            - read:apiKey
-  /login:  # Penambahan endpoint Create GIS
-    post:
-      tags:
-        - user
-      summary: Login User Data
-      description: Login User Data
-      operationId: loginUser
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth' # Gunakan skema yang sesuai di sini
-      responses:
-        '201':
-          description: Data successfully created
-        '400':
-          description: Invalid input or request body
-  /updatedgisfixx:  # Penambahan endpoint Create GIS
-    patch:
-      tags:
-        - Create GIS
-      summary: Update GIS Data
-      description: Update  GIS data
-      operationId: updateGIS
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
-      responses:
-        '201':
-          description: Data successfully created
-        '400':
-          description: Invalid input or request body
-      security:
-        - token: []
-  /deletegiss:  # Penambahan endpoint Create GIS
-    delete:
-      tags:
-        - Create GIS
-      summary: Delete GIS Data
-      description: Delete GIS data
-      operationId: DeleteGIS
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
-      responses:
-        '201':
-          description: Data successfully created
-        '400':
-          description: Invalid input or request body
-      security:
-        - token: []               
+        - SECRET: []
+               
 components:
   schemas:
     Peta:
@@ -181,12 +60,9 @@ components:
         type:
           type: string
           example: "Feature"
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
-              example: "LOKASI"
+        name:
+          type: string
+          example: "LOKASI"
         geometry:
           type: object
           properties:
@@ -196,47 +72,4 @@ components:
             coordinates:
               type: array
               items:
-                - type: array
-                  items:
-                    - [125.6, 10.1]
-    Auth:
-      type: object
-      properties:
-        username:
-          type: string
-          example: raull
-        password:
-          type: string
-          example: ganteng
-    AuthResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
-        token:
-          type: string
-          example: fehguy
-  requestBodies:
-    AuthReq:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Auth'
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AuthResponse'
-  securitySchemes:
-    token:
-      type: apiKey
-      name: token
-      in: header
+                type: number
