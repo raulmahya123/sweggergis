@@ -23,13 +23,6 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
-  - name: auth
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
-  - name: user
-    description: Get Token and Authorize
 paths:
   /createpostgisline-3:  # Penambahan endpoint Create GIS
     post:
@@ -53,9 +46,372 @@ paths:
         - SECRET:
             - write:apiKey
             - read:SECRET
-               
+  /gisintersect:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Intersect GIS Data
+      description: Intersect GIS Data
+      operationId: Intersect GIS Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Intersect' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Intersect'
+        '400':
+          description: Invalid input or request body          
+  /gisinterwicihin:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Within Gis Data
+      description: Within Gis Data
+      operationId: Within Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Within' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Within'
+        '400':
+          description: Invalid input or request body
+  /gisnear:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Near Gis Data
+      description: Near Gis Data
+      operationId: Near Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Near' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Near'
+        '400':
+          description: Invalid input or request body
+  /gispolygonee:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Polygone Gis Data
+      description: Polygone Gis Data
+      operationId: Polygone Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Polygone' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Polygone'
+        '400':
+          description: Invalid input or request body
+  /gisnearspehereee:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Near Sphere
+      description: Near Sphere
+      operationId: Near Sphere
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearSpehere' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NearSpehere'
+        '400':
+          description: Invalid input or request body
+  /gisbox:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Box Gis Data
+      description: Box Gis Data
+      operationId: Box Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Box' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Box'
+        '400':
+          description: Invalid input or request body
+  /giscenter:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Center Gis Data
+      description: Center Gis Data
+      operationId: Center Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Centar' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Centar'
+        '400':
+          description: Invalid input or request body
+  /gismax:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Max Gis Data
+      description: Max Gis Data
+      operationId: Max Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MAx' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MAx'
+        '400':
+          description: Invalid input or request body
+  /gismin:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Mix Gis Data
+      description: Mix Gis Data
+      operationId: Mix Gis Data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Mix' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Mix'
+        '400':
+          description: Invalid input or request body
+  /gispolygone:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - GEO SPASIAL
+      summary: Polygone
+      description: Polygone
+      operationId: Polygone
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearSpehere' # Gunakan skema yang sesuai di sini
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NearSpehere'
+        '400':
+          description: Invalid input or request body
 components:
   schemas:
+    Mix:
+      type: object
+      properties:
+        longitude:
+          type: number
+          example: 103.61028753823456
+        latitude:
+          type: number
+          example: -1.6246312350403684
+        minDistance:
+          type: number
+          example: 1000
+    MAx:
+      type: object
+      properties:
+        longitude:
+          type: number
+          example: 103.61028753823456
+        latitude:
+          type: number
+          example: -1.6246312350403684
+        maxDistance:
+          type: number
+          example: 1000
+    Centar:
+      type: object
+      properties:
+        longitude:
+          type: number
+          example: 103.61028753823456
+        latitude:
+          type: number
+          example: -1.6246312350403684
+    Box:
+      type: object
+      properties:
+        coordinates:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+            minItems: 2
+            maxItems: 2
+          minItems: 2
+          maxItems: 2
+          example:
+            - [103.61028753823456, -1.6246312350403684]
+            - [103.61061534308766, -1.6272725906014358]
+    NearSpehere:
+      type: object
+      properties:
+        longitude:
+          type: number
+          example: 103.61028753823456
+        latitude:
+          type: number
+          example: -1.6246312350403684
+    Near:
+      type: object
+      properties:
+        coordinates:
+          type: array
+          items:
+            type: number
+          minItems: 2
+          maxItems: 2
+          example:
+            - 103.61028753823456
+            - -1.6246312350403684
+    Within: # Penambahan skema Create GIS yanmg diats ini
+     type: object
+     properties:
+      coordinates:
+        type: array
+        items:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+            minItems: 2
+            maxItems: 2
+        minItems: 5
+        maxItems: 5
+        example:
+          - [103.62052506248301, -1.6105001000148462]
+          - [103.62061804929925, -1.6106710617710007]
+          - [103.62071435707355, -1.6106229269090022]
+          - [103.62061472834131, -1.6104420062116702]
+          - [103.62052506248301, -1.6105001000148462]
+    Polygone: # Penambahan skema Create GIS yanmg diats ini
+     type: object
+     properties:
+      coordinates:
+        type: array
+        items:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+            minItems: 2
+            maxItems: 2
+        minItems: 8
+        maxItems: 8
+        example:
+          - [103.6223153115809, -1.6053869404988887]
+          - [103.62237751773336, -1.605447740417219]
+          - [103.62247290050067, -1.605378649600084]
+          - [103.62253856255086, -1.6054574131308215]
+          - [103.6226228864457, -1.6054104313760433]
+          - [103.62261666583123, -1.6054000677539904]
+          - [103.62247151814165, -1.605255667941023]
+          - [103.6223153115809, -1.6053869404988887]  
+    Intersect:
+      type: object
+      properties:
+        longitude:
+          type: number
+          example: 103.61061534308766
+        latitude:
+          type: number
+          example: -1.6272725906014358
     Peta:
       type: object
       properties:
